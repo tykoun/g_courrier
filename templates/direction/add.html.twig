@@ -1,0 +1,17 @@
+{% extends "base.html.twig" %}
+{% block title %} Ajout de direction {% endblock %}
+
+{% block body %}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12">
+            <h3>Ajout de direction</h3>
+            {{form_start(form)}}
+            {{form_widget(form)}}
+            <button class="btn btn-primary">Enregistrer</button>
+            {{form_end(form)}}
+        </div>
+    </div>
+</div>
+{% endblock %}

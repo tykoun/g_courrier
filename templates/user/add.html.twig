@@ -1,0 +1,40 @@
+{% extends "base.html.twig" %}
+
+{% block title %} ajout des utilisateurs {% endblock %}
+
+{% block body %}
+
+    <div class="container mt-4">
+        <h1> Ajout des utilisateurs </h1>
+        {{ form_start(form) }}
+        <div class="row">
+            <div class="col-md-4">{{ form_row(form.Nom) }}</div>
+            <div class="col-md-4">{{ form_row(form.Prenom) }} </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-3">{{ form_row(form.Username) }}</div>
+            <div class="col-md-3">{{ form_row(form.Telephone) }}</div>
+            <div class="col-md-2">{{ form_row(form.service) }}</div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4">{{ form_row(form.email) }}</div>
+            <div class="col-md-4">{{ form_row(form.adresse) }}</div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-5">{{ form_row(form.Fonction) }}</div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4">{{ form_row(form.Password) }}</div>
+            <div class="col-md-4">{{ form_row(form.Confirm_password) }}</div>
+        </div>
+
+        {{ form_widget(form) }}
+        <button type="submit" class="btn btn-primary">Enregistrer</button>
+        {{ form_end(form) }}
+    </div>
+
+{% endblock %}

@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Tous les courriers!{% endblock %}
+
+{% block body %}
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-12 mt-2 mb-4">
+                <h3>Messagerie</h3>
+                <p>Resume de la messagerie</p>
+                {#                <p>Reçu : {{ app.user.received|length }}</p>#}
+                {#                <p>Envoyés : {{ app.user.sent|length }}</p>#}
+                <a class="btn btn-primary" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button"
+                   aria-controls="offcanvasExample">Voir mes dossiers</a>
+                <a href="{{ path('courrier_new') }}" class="btn btn-primary">Envoyer un message</a>
+            </div>
+            <div class="col-sm-12">
+                <div class="offcanvas offcanvas-start" tabindex="-1"
+                     id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+                    <div class="offcanvas-header">
+                        <h3 class="offcanvas-title" id="offcanvasExampleLabel">Mes dossiers</h3>
+                        <button type="button" class="btn btn-close text-reset"
+                                data-bs-dismiss="offcanvas" aria-label="Close">
+                        </button>
+                    </div>
+
+                    <div class="offcanvas-body">
+                        <div class="list-group">
+                            <a href="{{ path("courrier") }}" class="list-group-item list-group-item-action active">Accueil</a>
+                        </div>
+                        <div class="list-group">
+                            <a href="{{ path('recu') }}" class="list-group-item list-group-item-action ">Boîte de réception</a>
+                        </div>
+                        <div class="list-group">
+                            <a href="{{ path('courrier') }}" class="list-group-item list-group-item-action ">Eléments Envoyés</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Utilisateurs{% endblock %}
+
+{% block body %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-12">
+                <h3 class="float-left">
+                    Liste de tous les utilisateurs de l'OMNIS
+                </h3>
+                <p class="float-right mt-2">
+                    <a href="{{ path('user_new') }}" class="btn btn-gradient-primary">Ajouter</a>
+                </p>
+                <table class="table table-bordered">
+                    <thead>
+                    <tr>
+                        <th>Nom</th>
+                        <th>Prenom</th>
+                        <th>Username</th>
+                        <th>Telephone</th>
+                        <th>email</th>
+                        <th>Adresse</th>
+                        <th>Fonction</th>
+                        <th>Service</th>
+                        <th>Actions</th>
+                    </tr>
+                    </thead>
+
+                    <tbody>
+                    {% for user in users %}
+                        <tr>
+                            <td>{{ user.Nom }}</td>
+                            <td>{{ user.Prenom }}</td>
+                            <td>{{ user.Username }}</td>
+                            <td>{{ user.Telephone }}</td>
+                            <td>{{ user.email }}</td>
+                            <td>{{ user.Adresse }}</td>
+                            <td>{{ user.Fonction }}</td>
+                            <td>{{ user.service.nomservice }}</td>
+                            <td>
+                                <a class="btn btn-soft-purple" href="{{ path('user_edit',{id:user.id})}}"><i class="fa fa-edit"></i></a>
+                                <form method="post" action="{{ url('user_delete',{id:user.id}) }}" style="display: inline-block">
+                                    <input type="hidden" name="_token" value="{{ csrf_token('delete') }}">
+                                    <input type="hidden" name="_method" value="delete">
+                                    <button type="submit" class="btn btn-soft-danger" href="{{ path('user_delete',{id:user.id})}}"><i class="fa fa-trash"></i></button>
+                                </form>
+                            </td>
+                        </tr>
+                    {% else %}
+
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}

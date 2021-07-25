@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Inscription{% endblock %}
+
+{% block body %}
+
+    <div class="container-fluid mt-lg-5">
+        <div class="row">
+            <div class="col-sm-8 offset-1 jumbotron mt-lg-5">
+                <h2 class="mb-4">Inscription</h2>
+                {{ form_start(form) }}
+                <div class="row">
+                    <div class="col-md-6">{{ form_row(form.Nom) }}</div>
+                    <div class="col-md-6">{{ form_row(form.Prenom) }} </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">{{ form_row(form.Username) }}</div>
+                    <div class="col-md-4">{{ form_row(form.Telephone) }}</div>
+                    <div class="col-md-3">{{ form_row(form.service) }}</div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-4">{{ form_row(form.email) }}</div>
+                    <div class="col-md-4">{{ form_row(form.adresse) }}</div>
+                    <div class="col-md-3">{{ form_row(form.Fonction) }}</div>
+                </div>
+
+                <div class="row">
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">{{ form_row(form.Password) }}</div>
+                    <div class="col-md-6">{{ form_row(form.Confirm_password) }}</div>
+                </div>
+
+                {{ form_widget(form) }}
+                <button type="submit" class="btn btn-success">S'inscrire</button>
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </div>
+{% endblock %}

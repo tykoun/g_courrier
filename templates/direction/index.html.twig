@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Direction{% endblock %}
+
+{% block body %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="page-title-box">
+                    <div class="row">
+                        <div class="col">
+                            <h4 class="page-title">Directions</h4>
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="javascript:void(0);">Gcourier</a></li>
+                                <li class="breadcrumb-item active">Direction</li>
+                            </ol>
+                        </div><!--end col-->
+                        <div class="col-auto align-self-center">
+                            <a href="{{ path('direction_new') }}" class="btn btn-sm btn-outline-primary" id="Dash_Date">
+                                <i data-feather="calendar" class="align-self-center icon-xs ml-1"></i>Ajouter
+                            </a>
+                        </div>
+                    </div><!--end row-->
+                </div>
+
+                <table class="table table-success table-striped table-bordered text-success">
+                    <thead>
+                        <tr>
+                            <th>Nom</th>
+                            <th>Description</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for direction in directions %}
+                        <tr>
+                            <td>{{ direction.direction }}</td>
+                            <td>{{ direction.description }}</td>
+                            <td>
+                                <a class="btn btn-gradient-info" href="{{ path('direction_edit',{id:direction.id})}}">
+                                   <i class="fa fa-edit"></i>
+                                </a>
+                                <form method="post" style="display: inline-block" action="{{ path('direction_delete',{id:direction.id})}}">
+                                    <input type="hidden" name="_method" value="delete">
+                                    <input type="hidden" value="{{ csrf_token('delete') }}">
+                                    <button type="submit" class="btn btn-gradient-danger">
+                                        <i class="fa fa-trash"></i>
+                                    </button>
+                                </form>
+                            </td>
+                        </tr>
+                    {% else %}
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
