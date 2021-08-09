@@ -14,7 +14,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class DirectionController extends AbstractController
 {
     /**
-     * @Route("/direction", name="direction")
+     * @Route("/admin/direction", name="direction")
      */
     public function index(DirectionRepository $directioRepository): Response
     {

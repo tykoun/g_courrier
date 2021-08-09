@@ -15,7 +15,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class HomeController extends AbstractController
 {
     /**
-     * @Route("/dashboard", name="dashboard")
+     * @Route("/admin/dashboard", name="dashboard")
      */
     public function index(CourrierRepository $courrierRepository, DirectionRepository $directionRepository, DocumentRepository $documentRepository, DossierRepository $dossierRepository, UserRepository $userRepository, SignatureRepository $signatureRepository): Response
     {

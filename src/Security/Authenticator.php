@@ -30,6 +30,7 @@ class Authenticator extends AbstractFormLoginAuthenticator implements PasswordAu
     private $urlGenerator;
     private $csrfTokenManager;
     private $passwordEncoder;
+    private $roleUser;
 
     public function __construct(EntityManagerInterface $entityManager, UrlGeneratorInterface $urlGenerator, CsrfTokenManagerInterface $csrfTokenManager, UserPasswordEncoderInterface $passwordEncoder)
     {
@@ -72,7 +73,7 @@ class Authenticator extends AbstractFormLoginAuthenticator implements PasswordAu
         if (!$user) {
             throw new UsernameNotFoundException('Email could not be found.');
         }
-
+        $this->roleUser = $user->getRoles();
         return $user;
     }
 
@@ -91,10 +92,13 @@ class Authenticator extends AbstractFormLoginAuthenticator implements PasswordAu
 
     public function onAuthenticationSuccess(Request $request, TokenInterface $token, string $providerKey)
     {
+        if ($this->roleUser == ["ROLE_ADMIN" => "ROLE_ADMIN"]) {
+            return new RedirectResponse('/admin/dashboard');
+        }
+
         if ($targetPath = $this->getTargetPath($request->getSession(), $providerKey)) {
             return new RedirectResponse($targetPath);
         }
-
         return new RedirectResponse($this->urlGenerator->generate('home'));
     }
 

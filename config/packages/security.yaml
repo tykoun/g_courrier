@@ -42,10 +42,10 @@ security:
     # Note: Only the *first* access control that matches will be used
     access_control:
          - { path: ^/admin, roles: ROLE_ADMIN }
-         - { path: ^/profile, roles: ROLE_USER }
-         - { path: ^/courrier, roles: ROLE_USER }
-         - { path: ^/direction, roles: ROLE_USER }
-         - { path: ^/document, roles: ROLE_USER }
-         - { path: ^/dossier, roles: ROLE_USER }
-         - { path: ^/service, roles: ROLE_ADMIN }
-         - { path: ^/signature, roles: ROLE_USER }
+         - { path: ^/profile, roles: [ROLE_ADMIN, ROLE_USER] }
+         - { path: ^/courrier, roles: [ROLE_ADMIN, ROLE_USER] }
+         - { path: ^/direction, roles: [ROLE_ADMIN, ROLE_USER] }
+         - { path: ^/document, roles: [ROLE_ADMIN, ROLE_USER] }
+         - { path: ^/dossier, roles: [ROLE_ADMIN, ROLE_USER] }
+         - { path: ^/service, roles: [ROLE_ADMIN, ROLE_USER] }
+         - { path: ^/signature, roles: [ROLE_ADMIN, ROLE_USER] }
